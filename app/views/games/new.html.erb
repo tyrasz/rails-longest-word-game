@@ -1,0 +1,15 @@
+<h1>New game</h1>
+
+<ol>
+  <% @letters.each do |letter| %>
+    <li><%= letter.capitalize %></li>
+  <% end %>
+</ol>
+
+<form action="/score" method="post">
+  <input type="text" name="word" value="<%= params[:word] %>">
+  <input type="submit" value="Score!">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+</form>
+
